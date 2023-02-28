@@ -31,16 +31,17 @@ def bienvenida(request):
     letrero="Bienvenida"
     return HttpResponse(letrero)
 
+@csrf_exempt
 def multiplicacion(request):
     body_unicode =request.body.decode('utf-8')
     body = loads(body_unicode)
-    n1=body['n1']
-    d1=body['d1']
-    n2=body['n2']
-    d2=body['d2']
+    numerador1=body['numerador1']
+    denominador1=body['denominador1']
+    numerador2=body['numerador2']
+    denominador2=body['denominador2']
     
-    p=int(n1)*int(n2)
-    q=int(d1)*int(d2)
+    p=int(numerador1)*int(numerador2)
+    q=int(denominador1)*int(denominador2)
     resultado= reduce(p,q)
     json_resultado = resultado.toJSON()
     return HttpResponse(json_resultado,content_type ="text/json-comment-filtered")
@@ -49,21 +50,21 @@ def multiplicacion(request):
 def suma(request):
     body_unicode =request.body.decode('utf-8')
     body = loads(body_unicode)
-    n1=body['n1']
-    d1=body['d1']
-    n2=body['n2']
-    d2=body['d2']
+    numerador1=body['numerador1']
+    denominador1=body['denominador1']
+    numerador2=body['numerador2']
+    denominador2=body['denominador2']
     
-    n11=int(n1)
-    n22=int(n2)
-    d11=int(d1)
-    d22=int(d2)
-    if(d11==d22):
-        p=n11+n22
-        q=d11
+    numerador11=int(numerador1)
+    numerador22=int(numerador2)
+    denominador11=int(denominador1)
+    denominador22=int(denominador2)
+    if(denominador11==denominador22):
+        p=numerador11+numerador22
+        q=denominador11
     else:
-        p=(n11*d22)+(n22*d11)
-        q=d11*d22
+        p=(numerador11*denominador22)+(numerador22*denominador11)
+        q=denominador11*denominador22
     resultado= Fraccion(str(p),str(q))
     json_resultado = resultado.toJSON()
     return HttpResponse(json_resultado,content_type ="text/json-comment-filtered")
@@ -72,21 +73,21 @@ def suma(request):
 def resta(request):
     body_unicode =request.body.decode('utf-8')
     body = loads(body_unicode)
-    n1=body['n1']
-    d1=body['d1']
-    n2=body['n2']
-    d2=body['d2']
+    numerador1=body['numerador1']
+    denominador1=body['denominador1']
+    numerador2=body['numerador2']
+    denominador2=body['denominador2']
 
-    n11=int(n1)
-    n22=int(n2)
-    d11=int(d1)
-    d22=int(d2)
-    if(d11==d22):
-        p=n11-n22
-        q=d11
+    numerador11=int(numerador1)
+    numerador22=int(numerador2)
+    denominador11=int(denominador1)
+    denominador22=int(denominador2)
+    if(denominador11==denominador22):
+        p=numerador11-numerador22
+        q=denominador11
     else:
-        p=(n11*d22)-(n22*d11)
-        q=d11*d22
+        p=(numerador11*denominador22)-(numerador22*denominador11)
+        q=denominador11*denominador22
     resultado= reduce(p,q)
     json_resultado = resultado.toJSON()
     return HttpResponse(json_resultado,content_type ="text/json-comment-filtered")
@@ -95,13 +96,13 @@ def resta(request):
 def division(request):
     body_unicode =request.body.decode('utf-8')
     body = loads(body_unicode)
-    n1=body['n1']
-    d1=body['d1']
-    n2=body['n2']
-    d2=body['d2']
+    numerador1=body['numerador1']
+    denominador1=body['denominador1']
+    numerador2=body['numerador2']
+    denominador2=body['denominador2']
 
-    p=int(n1)*int(d2)
-    q=int(d1)*int(n2)
+    p=int(numerador1)*int(denominador2)
+    q=int(denominador1)*int(numerador2)
     resultado= reduce(p,q)
     json_resultado = resultado.toJSON()
     return HttpResponse(json_resultado,content_type ="text/json-comment-filtered")

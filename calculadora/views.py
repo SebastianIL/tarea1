@@ -27,6 +27,11 @@ def proceso(request):
     nombre = nombre.upper()
     return HttpResponse('Hola '+ nombre)
 
+def procesamiento(request):
+    nombre = request.POST['nombre']
+    nombre = nombre.title()
+    return render(request, 'proceso.html', {'name':nombre})
+
 def bienvenida(request):
     letrero="Bienvenida"
     return HttpResponse(letrero)

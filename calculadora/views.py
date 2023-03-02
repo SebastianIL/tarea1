@@ -22,11 +22,6 @@ def index(request):
     #return HttpResponse('<h1> Bienvenidos a la sesión del jueves! </h1>')
     return render(request,'index.html')
 
-def proceso(request):
-    nombre = request.POST['nombre']
-    nombre = nombre.upper()
-    return HttpResponse('Hola '+ nombre)
-
 def procesamiento(request):
     nombre = request.POST['nombre']
     nombre = nombre.title()

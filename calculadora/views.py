@@ -14,8 +14,8 @@ class Fraccion:
 
 def reduce(num,den):
     x=gcd(num,den)
-    num= num // x
-    den= den // x
+    num= num / x
+    den= den / x
     return Fraccion(str(num),str(den))
 
 def index(request):
